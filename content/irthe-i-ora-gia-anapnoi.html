@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ήρθε η Ώρα για Αναπνοή</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f7f7f7;
+  color: #222;
+}
+
+.site-main {
+  padding: 24px;
+}
+
+.block-content {
+  box-sizing: border-box;
+}
+
+body.width-narrow .block-content {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+body.width-normal .block-content {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+body.width-wide .block-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+body.width-legal .block-content {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------
+   Header
+-------------------------------------------------- */
+
+.site-header {
+  margin-bottom: 24px;
+}
+
+.site-header-simple {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  padding: 24px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+
+.site-header-bar {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+.site-header-bar.compact {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.site-title a,
+.site-nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-nav {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.site-search input {
+  padding: 8px 10px;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------
+   Header Hero
+-------------------------------------------------- */
+
+.site-header-hero {
+  position: relative;
+  width: min(100%, var(--header-width, 100%));
+  overflow: hidden;
+  border: var(--header-image-border-width, 0px) solid var(--header-image-border-color, transparent);
+  border-radius: var(--header-image-radius, 12px);
+  margin: 0 auto 12px auto;
+  box-sizing: border-box;
+}
+
+.site-header-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.site-header-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.18);
+  pointer-events: none;
+}
+
+.site-header-title-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  padding: 24px;
+  box-sizing: border-box;
+  transform: translateX(var(--header-title-offset-x, 0px));
+}
+
+.header-pos-top-left .site-header-title-layer {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.header-pos-top-center .site-header-title-layer {
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.header-pos-top-right .site-header-title-layer {
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.header-pos-center-left .site-header-title-layer {
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.header-pos-center .site-header-title-layer {
+  justify-content: center;
+  align-items: center;
+}
+
+.header-pos-center-right .site-header-title-layer {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header-pos-bottom-left .site-header-title-layer {
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding-bottom: var(--header-title-offset-bottom, 24px);
+}
+
+.header-pos-bottom-center .site-header-title-layer {
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: var(--header-title-offset-bottom, 24px);
+}
+
+.header-pos-bottom-right .site-header-title-layer {
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding-bottom: var(--header-title-offset-bottom, 24px);
+}
+
+.site-header-title-block {
+  max-width: 80%;
+  box-sizing: border-box;
+}
+
+.site-header-title-block.has-title-box {
+  background: var(--header-title-box-background, rgba(255,255,255,0.85));
+  border: var(--header-title-box-border-width, 1px) solid var(--header-title-box-border-color, #7a0000);
+  border-radius: var(--header-title-box-radius, 10px);
+  padding: var(--header-title-box-padding, 12px);
+  box-sizing: border-box;
+}
+
+.site-header-title {
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.site-header-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-header-subtitle {
+  margin-top: 8px;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* --------------------------------------------------
+   Page Banner
+-------------------------------------------------- */
+
+.page-banner {
+  width: min(100%, var(--page-banner-width, 100%));
+  margin: 0 auto 24px auto;
+  box-sizing: border-box;
+}
+
+.page-banner-image-wrap {
+  overflow: hidden;
+  border: var(--page-banner-border-width, 0px) solid var(--page-banner-border-color, transparent);
+  border-radius: var(--page-banner-radius, 12px);
+  box-sizing: border-box;
+}
+
+.page-banner-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* --------------------------------------------------
+   Footer
+-------------------------------------------------- */
+
+.site-footer {
+  margin: 24px;
+  background: var(--footer-background-color, #f8f8f8);
+  border: var(--footer-border-width, 0px) solid var(--footer-border-color, transparent);
+  border-radius: var(--footer-radius, 10px);
+  padding: var(--footer-padding, 24px);
+  text-align: var(--footer-text-align, center);
+  box-sizing: border-box;
+}
+
+.site-footer-image-wrap {
+  width: min(100%, var(--footer-width, 100%));
+  margin: 0 auto 18px auto;
+  box-sizing: border-box;
+}
+
+.site-footer-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.site-footer-content {
+  display: block;
+}
+
+.footer-layout-stack .site-footer-content {
+  display: block;
+}
+
+.footer-layout-inline .site-footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-layout-columns-2 .site-footer-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.footer-layout-columns-3 .site-footer-content {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.site-footer-title {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.site-footer-subtitle {
+  margin-bottom: 8px;
+}
+
+.site-footer-links,
+.site-footer-contact,
+.site-footer-copyright,
+.site-footer-default-text {
+  margin-top: 8px;
+}
+
+.site-footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* --------------------------------------------------
+   Existing content styles
+-------------------------------------------------- */
+
+.home-header h1 {
+  margin-top: 0;
+}
+
+.home-hero-image-wrap {
+  width: min(100%, 100%);
+  margin: 0 auto 24px auto;
+  box-sizing: border-box;
+}
+
+.home-hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.home-section {
+  margin-bottom: 32px;
+}
+
+.simple-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.simple-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 16px;
+}
+
+.simple-card h3 {
+  margin-top: 0;
+}
+
+.simple-card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.simple-card p {
+  white-space: pre-line;
+}
+
+.card-summary {
+  margin-bottom: 10px;
+}
+
+.card-summary > :first-child {
+  margin-top: 0;
+}
+
+.card-summary > :last-child {
+  margin-bottom: 0;
+}
+
+.person-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.person-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  overflow: hidden;
+}
+
+.person-card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.person-card-image-wrap {
+  width: min(100%, var(--person-card-image-width, 100%));
+  margin: 0 auto;
+}
+
+.card-image-wrapper {
+  position: relative;
+  height: 260px;
+  overflow: hidden;
+}
+
+.card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-hover {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.72);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  padding: 16px;
+}
+
+.card-image-wrapper:hover .card-hover {
+  opacity: 1;
+}
+
+.card-body {
+  padding: 14px;
+}
+
+.person-hero,
+.entity-header {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.person-photo-wrap {
+  width: min(100%, var(--person-photo-width, 100%));
+  margin: 0 auto;
+}
+
+.entity-image-wrap {
+  width: min(100%, var(--entity-image-width, 100%));
+  margin: 0 auto;
+}
+
+.content-image-wrap {
+  width: min(100%, var(--content-image-width, 100%));
+  margin: 0 auto 18px auto;
+}
+
+.person-photo img,
+.entity-image img,
+.content-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.person-summary p,
+.person-bio p,
+.entity-summary p,
+.person-short-summary,
+.entity-short-summary,
+.event-card p,
+.person-relations li div,
+.entity-relations li div,
+.content-summary p,
+.content-body div,
+.content-short-summary {
+  white-space: pre-line;
+}
+
+.person-tags span,
+.tag-list span {
+  display: inline-block;
+  background: #eee;
+  padding: 4px 8px;
+  margin: 0 6px 6px 0;
+}
+
+.content-page {
+  display: block;
+}
+
+.rich-content p {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.cg-list {
+  margin: 1.2rem 0;
+  padding-left: 1.5rem;
+}
+
+.cg-list li {
+  margin-bottom: 0.55rem;
+  line-height: 1.65;
+}
+
+.cg-quote {
+  margin: 1.8rem 0;
+  padding: 1rem 1.4rem;
+  border-left: 4px solid #444;
+  background: #f7f7f7;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.cg-quote p {
+  margin: 0;
+}
+
+.content-embedded-image,
+.content-embedded-pdf,
+.content-pdf-link {
+  margin: 18px 0;
+}
+
+.content-embedded-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.read-more-link {
+  display: inline-block;
+  margin-top: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.content-header,
+.content-summary,
+.content-body,
+.content-tags,
+.content-sources {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+
+.block-content {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  color: #1f1f1f;
+  background-color: #ffffff;
+  line-height: 1.7;
+  text-align: justify;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 24px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.block-content p {
+  margin: 0 0 1.1em 0;
+}
+
+.block-content h1,
+.block-content h2,
+.block-content h3,
+.block-content h4,
+.block-content h5,
+.block-content h6 {
+  font-family: "Times New Roman", serif;
+  color: #7a0000;
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+  line-height: 1.25;
+}
+
+.block-content h1 { font-size: 34px; }
+.block-content h2 { font-size: 28px; }
+.block-content h3 { font-size: 22px; }
+
+.block-content small {
+  font-size: 14px;
+  color: #666666;
+}
+
+.block-content a {
+  color: #003366;
+  text-decoration: none;
+}
+
+.block-content a:hover {
+  color: #8b0000;
+  text-decoration: underline;
+}
+
+.block-content .content-embedded-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  display: block;
+  margin: 0 auto;
+}
+
+.block-content .content-embedded-pdf {
+  background: #ffffff;
+  border: 1px solid #d6d6d6;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  margin: 1.2em 0;
+}
+
+.block-content .content-embedded-pdf iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: #ffffff;
+}
+
+.block-content .content-pdf-link {
+  margin: 1em 0 1.2em 0;
+}
+
+.block-content blockquote {
+  margin: 1.2em 0;
+  padding: 0.8em 1em;
+  border-left: 4px solid #d6d6d6;
+  background: #f8f8f8;
+  border-radius: 10px;
+}
+
+.block-content hr {
+  border: 0;
+  border-top: 1px solid #d6d6d6;
+  margin: 1.5em 0;
+}
+
+
+:root {
+  --page-max-width: 1200px;
+  --content-max-width: 1100px;
+  --desktop-columns: 3;
+  --tablet-columns: 2;
+  --mobile-columns: 1;
+}
+
+.site-main,
+.container {
+  max-width: var(--page-max-width, 1200px);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.block-content,
+.content-container {
+  max-width: var(--content-max-width, 1100px);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.grid,
+.card-grid,
+.block-grid,
+.simple-card-grid,
+.person-grid,
+.portal-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--desktop-columns, 3), minmax(0, 1fr));
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .grid,
+  .card-grid,
+  .block-grid,
+  .simple-card-grid,
+  .person-grid,
+  .portal-grid {
+    grid-template-columns: repeat(var(--tablet-columns, 2), minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .grid,
+  .card-grid,
+  .block-grid,
+  .simple-card-grid,
+  .person-grid,
+  .portal-grid {
+    grid-template-columns: repeat(var(--mobile-columns, 1), minmax(0, 1fr));
+  }
+}
+
+
+:root {
+  --card-image-height: 220px;
+  --card-image-radius: 10px;
+  --card-image-mode: cover;
+}
+
+.card-image-link,
+.card-image-wrapper,
+.block-card-image-link,
+.blog-card-image-link {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: var(--card-image-radius, 10px);
+  background: #f6f6f6;
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+.simple-card img,
+.portal-card img,
+.card img,
+.block-card img,
+.blog-card img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.card-image,
+.block-card-image,
+.blog-card-image,
+.simple-card .card-image,
+.portal-card .card-image,
+.simple-card .block-card-image,
+.portal-card .block-card-image,
+.simple-card .blog-card-image,
+.portal-card .blog-card-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: var(--card-image-height, 220px);
+  object-fit: var(--card-image-mode, cover);
+  border-radius: var(--card-image-radius, 10px);
+  box-sizing: border-box;
+}
+
+.simple-card,
+.portal-card,
+.card,
+.block-card,
+.blog-card {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.grid > *,
+.card-grid > *,
+.block-grid > *,
+.simple-card-grid > *,
+.portal-grid > * {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.simple-card-body,
+.portal-card-body,
+.card-body {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.simple-card .card-image-link {
+  margin: 0 0 14px 0;
+}
+
+  </style>
+  
+  <script src="../js/graph-data.js" defer></script>
+  
+  <script src="../js/app.js" defer></script>
+</head>
+<body class="theme-default layout-default nav-minimal page-default section-boxed width-normal">
+
+  
+  <header class="site-header site-header-mode-auto">
+
+    
+    <div class="site-header-hero header-pos-bottom-center"
+         style="
+           --header-width: 1000px;
+           --header-title-offset-bottom: 24px;
+           --header-title-offset-x: 0px;
+           --header-title-box-background: ffffffcc;
+           --header-title-box-border-color: 7a0000;
+           --header-title-box-border-width: 1px;
+           --header-title-box-padding: 12px;
+           --header-title-box-radius: 10px;
+           --header-image-border-color: d6d6d6;
+           --header-image-border-width: 1px;
+           --header-image-radius: 12px;
+         ">
+
+      <img class="site-header-image"
+           src="../images/anapnoi1.png"
+           alt="ΑΝΑΠΝΟΗ">
+
+      <div class="site-header-overlay"></div>
+
+      <div class="site-header-title-layer">
+        <div class="site-header-title-block has-title-box"
+             style="text-align: center;">
+
+          <div class="site-header-title">
+            <a href="../index.html">ΑΝΑΠΝΟΗ</a>
+          </div>
+
+          
+
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="site-header-simple">
+      <div class="site-title">
+        <a href="../index.html">ΑΝΑΠΝΟΗ</a>
+      </div>
+
+      
+    </div>
+
+    <div class="site-header-bar ">
+      <nav class="site-nav">
+        <a href="../index.html">Αρχική</a>
+      </nav>
+
+      
+      
+      <div class="site-search">
+        <input type="text" placeholder="Αναζήτηση...">
+      </div>
+      
+      
+    </div>
+
+  </header>
+  
+
+  
+
+  <main class="site-main">
+    <div class="block-content theme-default">
+      <section class="content-page">
+
+  <section class="content-header">
+    <h1>Ήρθε η Ώρα για Αναπνοή</h1>
+
+    
+
+    
+
+    
+    <p class="content-short-summary"><p>Το άρθρο παρουσιάζει την Αναπνοή ως πολιτική απάντηση στο ρήγμα ανάμεσα στους πολίτες και το πολιτικό σύστημα, με έμφαση στη διαφάνεια, τη δημοκρατική συμμετοχή, την κοινωνική δικαιοσύνη, την εθνική κυριαρχία και την αποκατάσταση της εμπιστοσύνης.</p></p>
+    
+  </section>
+
+  
+  <section class="content-summary">
+    <h2>Περίληψη</h2>
+    <p>Η σύγχρονη ελληνική πραγματικότητα χαρακτηρίζεται από βαθύ ρήγμα ανάμεσα στους πολίτες και το πολιτικό σύστημα. Το άρθρο υποστηρίζει ότι η Αναπνοή έρχεται να καλύψει αυτό το κενό, προσφέροντας θεσμική, δημοκρατική και κοινωνικά ρεαλιστική διέξοδο: διαφάνεια, εσωκομματική δημοκρατία, συμμετοχή, προστασία βασικών αγαθών, εθνική κυριαρχία χωρίς απομονωτισμό και ένα νέο πολιτικό ήθος απέναντι στην κρίση εμπιστοσύνης.</p>
+  </section>
+  
+
+  <section class="content-body">
+    <h2>Κείμενο</h2>
+    <div class="rich-content"><p><strong>Ήρθε η Ώρα για Αναπνοή</strong></p><p>*Σπυρίδων Τσάλλας</p><p>Στη σύγχρονη ελληνική πραγματικότητα έχει ανοίξει ένα βαθύ ρήγμα ανάμεσα στους πολίτες και το πολιτικό σύστημα.</p><p>Η κοινωνία νιώθει εγκαταλειμμένη από τους θεσμούς, δυσαρεστημένη από την ανικανότητα κυβέρνησης και αντιπολίτευσης να αντιμετωπίσουν ζητήματα καθημερινότητας, και φοβισμένη από τις ακροδεξιές τάσεις που εκμεταλλεύονται την οργή και την ανασφάλειά της.</p><p>Σε αυτό το πολιτικό αδιέξοδο, το νέο πολιτικό κόμμα <strong>«Αναπνοή»</strong> προσφέρει τη μοναδική ρεαλιστική διέξοδο.</p><p><strong>Το Κενό Εμπιστοσύνης και η Ανάγκη για Ανανέωση</strong></p><p>Οι πολίτες επισημαίνουν την κρίση νομιμοποίησης που διατρέχει ολόκληρο το πολιτικό φάσμα.</p><div class="content-embedded-image"><img src="../images/20.png" alt="image" width="800"></div><p>Δεν εμπιστεύονται ούτε την κυβέρνηση ούτε την αντιπολίτευση, καθώς κράτος και κόμματα φαίνονται ανίκανα να εξασφαλίσουν ασφάλεια στις υποδομές, να αποτρέψουν υποκλοπές ή να τιμωρήσουν την ατιμωρησία.</p><p>Η Αναπνοή αντιστρέφει αυτή την τάση, θεμελιώνοντας τη δράση της σε <strong>πλήρη διαφάνεια</strong>, <strong>εσωκομματική δημοκρατία</strong> και <strong>ενεργό συμμετοχή των μελών της</strong>.</p><p>Με ανοιχτές διαδικασίες και ετήσιες εκλογές για τα όργανα ηγεσίας, το κόμμα οικοδομεί ξανά την εμπιστοσύνη, υπογραμμίζοντας ότι η πολιτική μπορεί να έχει <strong>λογοδοσία</strong> και ουσιαστική σύνδεση με τον πολίτη.</p><p><strong>Αντίδραση στην Ακροδεξιά και Προστασία Δημοκρατικών Αξιών</strong></p><p>Ένα επαναλαμβανόμενο μήνυμα στα άρθρα είναι ο κίνδυνος της έλευσης της ακροδεξιάς ως «αντισυστημικής» δύναμης, η οποία προσφέρει τη ρητορική του μίσους και της διχόνοιας.</p><p>Η Αναπνοή απορρίπτει κατηγορηματικά κάθε μορφή εξτρεμισμού.</p><p>Υπερασπίζεται τα <strong>ανθρώπινα δικαιώματα</strong>, την <strong>ισότητα</strong> και την <strong>κοινωνική δικαιοσύνη</strong>, ενώ διατηρεί παράλληλα σεβασμό στην εθνική κυριαρχία χωρίς απομονωτισμό.</p><p>Αυτή η ισορροπία ανάμεσα σε πατριωτισμό και κοινωνική ευθύνη λειτουργεί ως αντίδοτο στον εκφυλισμό της πολιτικής σε αυταρχικές τάσεις.</p><p><strong>Απάντηση σε Πραγματικές Ανάγκες: Ασφάλεια, Υγεία, Εκπαίδευση</strong></p><p>Οι πολίτες ζητούν κανονικότητα.</p><p>Να μπορούν να χρησιμοποιούν μέσα μαζικής μεταφοράς χωρίς φόβο, να βρίσκουν κρεβάτι σε δημόσιο νοσοκομείο και το παιδί τους να πηγαίνει σε αξιοπρεπές σχολείο.</p><div class="content-embedded-image"><img src="../images/13.png" alt="image" width="800"></div><p>Η Αναπνοή ανταποκρίνεται με συγκροτημένο πρόγραμμα:</p><p><strong>Οικονομία:</strong> Προστασία μικρών και μεσαίων επιχειρήσεων, ώστε η ανάπτυξη να στηρίζεται στην πραγματική οικονομία και όχι στις πολυεθνικές.</p><p><strong>Υγεία και Εκπαίδευση:</strong> Ενίσχυση και εκσυγχρονισμός των δημόσιων συστημάτων, με ιατρικό και διδακτικό προσωπικό επαρκές και προστατευμένο από ιδιωτικές πιέσεις.</p><p><strong>Μετανάστευση:</strong> Έλεγχος συνόρων με σεβασμό στα ανθρώπινα δικαιώματα, αποφεύγοντας τόσο την απάνθρωπη διαχείριση όσο και την ανεξέλεγκτη είσοδο.</p><p><strong>Δημοκρατία από τη Βάση: Συμμετοχή και Συλλογικότητα</strong></p><p>Πλήθος μετρήσεων καταγράφουν την αποξένωση των πολιτών από την πολιτική: ρευστότητα, άρνηση εκπροσώπησης, στείρα οργή.</p><p>Η Αναπνοή προτείνει <strong>οριζόντιες δομές</strong> με τοπικές οργανώσεις, επιτροπές γειτονιάς και ψηφιακές πλατφόρμες διαλόγου.</p><p>Εκεί, κάθε πολίτης θα έχει δικαίωμα πρωτοβουλίας, πρότασης νόμου και ακόμα και «λαϊκής ερώτησης» στο κεντρικό όργανο του κόμματος.</p><p>Έτσι, η πολιτική σταματά να είναι απάθεια και γίνεται <strong>συλλογική δράση</strong>.</p><p><strong>Εθνική Κυριαρχία χωρίς Απομονωτισμό</strong></p><p>Παρά τον σεβασμό στην αυτονομία της χώρας, η Αναπνοή προκρίνει διεθνείς συνεργασίες με όρους <strong>αμοιβαίας ωφέλειας</strong>, αποφεύγοντας είτε την παθητική υποταγή σε εξωτερικές πιέσεις είτε τον ακραίο εθνικισμό που οδηγεί σε απομόνωση.</p><p>Αυτό ανταποκρίνεται στις ανησυχίες των πολιτών για την παραχώρηση κυριαρχικών δικαιωμάτων χωρίς ουσιαστικά ανταλλάγματα.</p><p><strong>Το Όραμα της Αναπνοής: Ελευθερία, Δικαιοσύνη, Συμμετοχή</strong></p><p>Στην ιδρυτική διακήρυξη, η Αναπνοή δεσμεύεται ότι καμία απόφαση δεν θα λαμβάνεται χωρίς τη συναίνεση των μελών, κανένας πολίτης δεν θα αισθάνεται ανίσχυρος και κανένα δημόσιο αγαθό δεν θα αφήνεται στο έλεος της αγοράς.</p><div class="content-embedded-image"><img src="../images/24.png" alt="image" width="800"></div><p>Το κόμμα βάζει ως υπέρτατο κριτήριο τις <strong>δημοκρατικές διαδικασίες</strong>, την <strong>προστασία δικαιωμάτων</strong> και την <strong>κοινωνική συνοχή</strong>, απορρίπτοντας την επιχειρηματική λογική που θέλει τον πολίτη «πελάτη» του κράτους.</p><p><strong>Από το Αδιέξοδο στην Ελπίδα</strong></p><p>Η πολιτική κρίση που βιώνουμε δεν είναι παροδικό «κακό κλίμα».</p><p>Πρόκειται για βασανιστική αμφισβήτηση του κοινωνικού συμβολαίου, όπου η πλειονότητα θεωρεί ότι το κράτος δεν κάνει τη δουλειά του.</p><p>Η Αναπνοή, όμως, δεν υπόσχεται μαγικές λύσεις.</p><p>Δεσμεύεται σε αναγκαίες, μετρήσιμες τομές: <strong>ίση πρόσβαση σε υπηρεσίες</strong>, <strong>δίκαιη κατανομή πόρων</strong>, <strong>λογοδοσία εξουσίας</strong>.</p><p>Με αυτή την πρακτική ρεαλιστικότητα, το κόμμα μετατρέπει την οργή σε δημιουργική ενέργεια, ανοίγοντας δρόμο για μια Ελλάδα όπου οι θεσμοί και οι πολίτες θα αναπνέουν και πάλι μαζί.</p><p><strong>Συμπέρασμα</strong></p><p>Η παγκόσμια τάξη πραγμάτων που διαμορφώνεται μετά τις πρόσφατες εκλογές στις ΗΠΑ επιβάλλει αναπροσαρμογή της εξωτερικής μας πολιτικής και των εσωτερικών μας πολιτικών ισορροπιών.</p><p>Όπως αποδεικνύεται, όλα ανεξαιρέτως τα μεγάλα κόμματα εντός της Βουλής στήριξαν ανοιχτά ή σιωπηρά τη χαμένη παράταξη των Δημοκρατικών, υπονομεύοντας έτσι την εθνική μας θέση απέναντι στη νέα διοίκηση των ΗΠΑ.</p><p>Δεν πρόκειται απλώς για αλλαγή στάσης ή πρόσωπα.</p><p>Πρόκειται για συστημική εξάρτηση που βάζει σε κίνδυνο την εθνική επιβίωση και την ευημερία κάθε Έλληνα.</p><p>Μόνο οι περιφερειακοί «δορυφόροι» των μεγάλων κομμάτων — οι προσωποπαγείς σχηματισμοί που σπεύδουν να δηλώσουν υποταγή στην πρώτη ευκαιρία — επιχείρησαν να παρουσιάσουν ψευδώς τη στήριξή τους στην Πολιτειακή Παράταξη των ΗΠΑ.</p><p>Αυτοί οι «αχυράνθρωποι» του διεθνούς συστήματος της αντίπαλης παράταξης δεν εκπροσωπούν τα εθνικά μας συμφέροντα.</p><div class="content-embedded-image"><img src="../images/20.png" alt="image" width="800"></div><p>Αντιθέτως, δημιουργούν βάσιμες ανησυχίες για μελλοντικές πιέσεις, κυρώσεις ή αποκλεισμούς που θα πλήξουν την οικονομία, την ασφάλεια και τα κοινωνικά δικαιώματά μας.</p><p><strong>Η Αναπνοή, η Πολιτειακή Παράταξη της Ελληνικής Δημοκρατίας, είναι η εγγύηση ότι η Ελλάδα θα προσαρμοστεί στο νέο διεθνές περιβάλλον με εθνική αξιοπρέπεια και διαφανείς, ανεξάρτητες συμμαχίες.</strong></p><p>Σε μια χώρα που διψάει για οξυγόνο — δημοκρατικό, κοινωνικό, πολιτικό — η Αναπνοή αποτελεί τη ρεαλιστική απάντηση στην κρίση εμπιστοσύνης, στην ακροδεξιά απειλή και στην εγκατάλειψη βασικών αγαθών.</p><p>Με αρχές, πρόγραμμα και οργανωτική δομή που προέρχονται από τις βάσεις της κοινωνίας, το κόμμα αυτό μπορεί να οδηγήσει την Ελλάδα από το αδιέξοδο της δυσπιστίας στην ελπίδα της συλλογικής ανάταξης.</p><p>* ΑΝΑΠΝΟΗ – Πολιτειακή Παράταξη</p><p>Δημοσιεύθηκε στα «Επίκαιρα»</p></div>
+    
+  </section>
+
+  
+
+  
+
+</section>
+
+    </div>
+  </main>
+
+  
+  <footer class="site-footer footer-style-solid footer-layout-stack"
+          style="
+            --footer-background-color: f8f8f8;
+            --footer-border-color: d6d6d6;
+            --footer-border-width: 1px;
+            --footer-radius: 10px;
+            --footer-padding: 24px;
+            --footer-text-align: center;
+          ">
+
+    
+
+    <div class="site-footer-content">
+
+      
+
+      
+
+      
+
+      
+
+      
+      <div class="site-footer-copyright">&copy; ΑΝΑΠΝΟΗ</div>
+      
+
+      <div class="site-footer-default-text">ΑΝΑΠΝΟΗ</div>
+
+    </div>
+  </footer>
+  
+
+</body>
+</html>
